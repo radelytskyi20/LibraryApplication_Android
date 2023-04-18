@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">LibraryApplication</string>
+
+    <!-- Main Activity -->
+    <string name="add_new_book_floatingButton_MAINACTIVITY">Добавить новую книгу</string>
+    <!--    -->
+
+
+    <!-- AddNewBook Activity -->
+    <string name="enter_book_title_ADDNEWBOOKACTIVITY">Назва книги</string>
+    <string name="enter_author_ADDNEWBOOKACTIVITY">Автор</string>
+    <string name="enter_number_of_pages_ADDNEWBOOKACTIVITY">Кількість сторінок</string>
+    <string name="enter_genre_ADDNEWBOOKACTVITY">Жанр</string>
+    <string name="enter_language_ADDNEWBOOKACTIVITY">Мова</string>
+    <string name="add_book_button_ADDNEWBOOKACTIVITY">Зберегти книгу у БД</string>
+    <!--    -->
+
+    <!-- BottomNavMenu File -->
+    <string name="home_menu_BOTTOMNAVMENU">Головна сторінка</string>
+    <string name="add_new_book_menu_BOTTOMNAVMENU">Додати книгу</string>
+    <string name="search_nav_BOTTOMNAVMENU">Пошук</string>
+    <!--    -->
+    
+    <string name="book_title_text_ONELINEBOOK">Назва книги</string>
+    <string name="book_author_text_ONELINEBOOK">Автор</string>
+    <string name="book_pages_text_ONELINEBOOK">999</string>
+</resources>
