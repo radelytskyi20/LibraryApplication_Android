@@ -20,7 +20,7 @@
     <string name="add_new_book_menu_BOTTOMNAVMENU">Додати книгу</string>
     <string name="search_nav_BOTTOMNAVMENU">Пошук</string>
     <!--    -->
-    
+
     <string name="book_title_text_ONELINEBOOK">Назва книги</string>
     <string name="book_author_text_ONELINEBOOK">Автор</string>
     <string name="book_pages_text_ONELINEBOOK">999</string>
