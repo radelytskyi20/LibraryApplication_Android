@@ -21,7 +21,13 @@
     <string name="search_nav_BOTTOMNAVMENU">Пошук</string>
     <!--    -->
 
+    <!-- OneLineBook File -->
     <string name="book_title_text_ONELINEBOOK">Назва книги</string>
     <string name="book_author_text_ONELINEBOOK">Автор</string>
     <string name="book_pages_text_ONELINEBOOK">999</string>
+    <!--    -->
+
+    <!-- BookDetailsActivity -->
+    <string name="test_text_BOOKDETAILSACTIVITY">Просто тест :)</string>
+    <!--    -->
 </resources>
