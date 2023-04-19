@@ -1,6 +1,7 @@
 package com.example.libraryapplication.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,9 +10,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.libraryapplication.BookDetailsActivity;
 import com.example.libraryapplication.Model.Book;
 import com.example.libraryapplication.R;
 
@@ -42,6 +45,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.bookAuthorText.setText(bookList.get(position).getAuthor());
         holder.bookPagesText.setText(String.valueOf(bookList.get(position).getPages()));
         Glide.with(this.context).load(bookList.get(position).getImage()).into(holder.bookImageView);
+
+        holder.parentLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent bookDetailsActivity = new Intent(context, BookDetailsActivity.class);
+                bookDetailsActivity.putExtra("id",  String.valueOf(bookList.get(position).getId()));
+                context.startActivity(bookDetailsActivity);
+            }
+        });
     }
 
     @Override
@@ -53,6 +65,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     {
         ImageView bookImageView;
         TextView bookTitleText, bookAuthorText, bookPagesText;
+        ConstraintLayout parentLayout;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -61,6 +74,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             bookTitleText = itemView.findViewById(R.id.book_title_text_ONELINEBOOK);
             bookAuthorText = itemView.findViewById(R.id.book_author_text_ONELINEBOOK);
             bookPagesText = itemView.findViewById(R.id.book_pages_text_ONELINEBOOK);
+            parentLayout = itemView.findViewById(R.id.one_line_book_layout_ONELINEBOOK);
         }
     }
 }

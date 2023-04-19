@@ -12,6 +12,7 @@
     <string name="enter_number_of_pages_ADDNEWBOOKACTIVITY">Кількість сторінок</string>
     <string name="enter_genre_ADDNEWBOOKACTVITY">Жанр</string>
     <string name="enter_language_ADDNEWBOOKACTIVITY">Мова</string>
+    <string name="enter_url_ADDNEWBOOKACTIVITY">Посилання на книгу</string>
     <string name="add_book_button_ADDNEWBOOKACTIVITY">Зберегти книгу у БД</string>
     <!--    -->
 
@@ -28,6 +29,14 @@
     <!--    -->
 
     <!-- BookDetailsActivity -->
-    <string name="test_text_BOOKDETAILSACTIVITY">Просто тест :)</string>
+    <string name="edit_book_title_BOOKDETAILSACTIVITY">Назва книги</string>
+    <string name="edit_author_BOOKDETAILSACTIVITY">Автор</string>
+    <string name="edit_genre_BOOKDETAILSACTIVITY">Жанр</string>
+    <string name="edit_language_BOOKDETAILSACTIVITY">Мова</string>
+    <string name="edit_number_of_pages_BOOKDETAILSACTIVITY">Кількість сторінок</string>
+    <string name="update_book_info_button_BOOKDETAILSACTIVITY">Оновити інформацію</string>
+    <string name="delete_book_button_BOOKDETAILSACTIVITY">Видалити книгу</string>
+    <string name="read_book_button_BOOKDETAILSACTIVITY">Читати</string>
+    <string name="edit_url_BOOKDETAILSACTIVITY">Посилання на книгу</string>
     <!--    -->
 </resources>

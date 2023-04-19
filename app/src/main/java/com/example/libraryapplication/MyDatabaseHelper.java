@@ -27,6 +27,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_GENRE = "genre";
     public static final String COLUMN_LANGUAGE = "language";
     public static final String COLUMN_IMAGE = "image";
+    public static final String COLUMN_URL = "url";
 
 
     public MyDatabaseHelper(@Nullable Context context) {
@@ -44,6 +45,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
                         + COLUMN_PAGES + " INTEGER, "
                         + COLUMN_GENRE + " TEXT, "
                         + COLUMN_LANGUAGE + " TEXT, "
+                        + COLUMN_URL + " TEXT, "
                         + COLUMN_IMAGE + " BLOB"
                         + ")";
 
@@ -67,14 +69,13 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         cv.put(COLUMN_GENRE, book.getGenre());
         cv.put(COLUMN_LANGUAGE, book.getLanguage());
         cv.put(COLUMN_IMAGE, book.getImage());
-
+        cv.put(COLUMN_URL, book.getUrl());
         long result = db.insert(TABLE_MY_LIBRARY, null, cv);
         db.close();
 
         return result != -1;
     }
-    public List<Book> getAllBooks()
-    {
+    public List<Book> getAllBooks() {
         List<Book> bookList = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_MY_LIBRARY, null);
@@ -87,9 +88,10 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
                 int pages = cursor.getInt(3);
                 String genre = cursor.getString(4);
                 String language = cursor.getString(5);
-                byte[] image = cursor.getBlob(6);
+                String url = cursor.getString(6);
+                byte[] image = cursor.getBlob(7);
 
-                Book book = new Book(id, pages, title, author, genre, language, image);
+                Book book = new Book(id, pages, title, author, genre, language, url, image);
                 bookList.add(book);
             } while (cursor.moveToNext());
         }
@@ -99,4 +101,64 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
         return bookList;
     }
+
+
+    public Book findBookById(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String[] columns = new String[] {
+                COLUMN_ID,
+                COLUMN_TITLE,
+                COLUMN_AUTHOR,
+                COLUMN_PAGES,
+                COLUMN_GENRE,
+                COLUMN_LANGUAGE,
+                COLUMN_URL,
+                COLUMN_IMAGE
+        };
+        String selection = COLUMN_ID + "=?";
+        String[] selectionArgs = new String[] {String.valueOf(id)};
+        Cursor cursor = db.query(TABLE_MY_LIBRARY, columns, selection, selectionArgs, null, null, null, null);
+
+        Book book = null;
+        if (cursor != null && cursor.moveToFirst()) {
+            int bookId = cursor.getInt(0);
+            String title = cursor.getString(1);
+            String author = cursor.getString(2);
+            int pages = cursor.getInt(3);
+            String genre = cursor.getString(4);
+            String language = cursor.getString(5);
+            String url = cursor.getString(6);
+            byte[] image = cursor.getBlob(7);
+
+            book = new Book(bookId, pages, title, author, genre, language, url, image);
+        }
+
+        if (cursor != null) {
+            cursor.close();
+        }
+
+        db.close();
+
+        return book;
+    }
+
+    public boolean updateBook(Book book) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_TITLE, book.getTitle());
+        values.put(COLUMN_AUTHOR, book.getAuthor());
+        values.put(COLUMN_PAGES, book.getPages());
+        values.put(COLUMN_GENRE, book.getGenre());
+        values.put(COLUMN_LANGUAGE, book.getLanguage());
+        values.put(COLUMN_URL, book.getUrl());
+        values.put(COLUMN_IMAGE, book.getImage());
+
+        int result = db.update(TABLE_MY_LIBRARY, values, COLUMN_ID + " = ?", new String[]{String.valueOf(book.getId())});
+        db.close();
+
+        return result > 0;
+    }
+
 }

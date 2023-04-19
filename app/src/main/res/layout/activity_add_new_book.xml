@@ -91,19 +91,34 @@
         app:layout_constraintTop_toBottomOf="@+id/enter_genre_ADDNEWBOOKACTVITY"
         tools:ignore="TouchTargetSizeCheck" />
 
+    <EditText
+        android:id="@+id/enter_url_ADDNEWBOOKACTIVITY"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="@string/enter_url_ADDNEWBOOKACTIVITY"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enter_number_of_pages_ADDNEWBOOKACTIVITY"
+        tools:ignore="TouchTargetSizeCheck" />
+
     <Button
         android:id="@+id/add_book_button_ADDNEWBOOKACTIVITY"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="55dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="8dp"
         android:text="@string/add_book_button_ADDNEWBOOKACTIVITY"
         android:textAllCaps="false"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enter_number_of_pages_ADDNEWBOOKACTIVITY" />
+        app:layout_constraintTop_toBottomOf="@+id/enter_url_ADDNEWBOOKACTIVITY" />
 
     <ImageView
         android:id="@+id/select_book_image_ADDNEWBOOKACTIVITY"

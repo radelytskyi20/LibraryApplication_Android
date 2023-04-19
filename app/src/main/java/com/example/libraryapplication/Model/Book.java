@@ -3,26 +3,37 @@ package com.example.libraryapplication.Model;
 public class Book
 {
     private int id, pages;
-    private String title, author, genre, language;
+    private String title, author, genre, language, url;
     private byte[] image;
 
-    public Book(int id, int pages, String title, String author, String genre, String language, byte[] image) {
+    public Book(int id, int pages, String title, String author, String genre, String language, String url, byte[] image) {
         this.id = id;
         this.pages = pages;
         this.title = title;
         this.author = author;
         this.genre = genre;
         this.language = language;
+        this.url = url;
         this.image = image;
+
     }
 
-    public Book(int pages, String title, String author, String genre, String language, byte[] image) {
+    public Book(int pages, String title, String author, String genre, String language, String url, byte[] image) {
         this.pages = pages;
         this.title = title;
         this.author = author;
         this.genre = genre;
         this.language = language;
+        this.url = url;
         this.image = image;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public int getId() {
@@ -69,7 +80,7 @@ public class Book
         return language;
     }
 
-    public void setLanguage(String language) {
+        public void setLanguage(String language) {
         this.language = language;
     }
 

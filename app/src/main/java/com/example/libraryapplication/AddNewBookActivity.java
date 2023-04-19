@@ -26,7 +26,7 @@ import java.io.InputStream;
 
 public class AddNewBookActivity extends AppCompatActivity {
 
-    EditText titleInputText, authorInputText, pagesInputText, genreInputText, languageInputText;
+    EditText titleInputText, authorInputText, pagesInputText, genreInputText, languageInputText, urlInputText;
     ImageView bookImageView;
     Button addNewBookButton;
     private byte[] bookImageInBytes;
@@ -34,9 +34,6 @@ public class AddNewBookActivity extends AppCompatActivity {
     private MyDatabaseHelper myDatabaseHelper;
 
     BottomNavigationView bottomNavigationView;
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +45,7 @@ public class AddNewBookActivity extends AppCompatActivity {
         pagesInputText = (EditText) findViewById(R.id.enter_number_of_pages_ADDNEWBOOKACTIVITY);
         genreInputText = (EditText) findViewById(R.id.enter_genre_ADDNEWBOOKACTVITY);
         languageInputText = (EditText) findViewById(R.id.enter_language_ADDNEWBOOKACTIVITY);
+        urlInputText = (EditText) findViewById(R.id.enter_url_ADDNEWBOOKACTIVITY);
 
         bookImageView = (ImageView) findViewById(R.id.select_book_image_ADDNEWBOOKACTIVITY);
         addNewBookButton = (Button) findViewById(R.id.add_book_button_ADDNEWBOOKACTIVITY);
@@ -107,8 +105,9 @@ public class AddNewBookActivity extends AppCompatActivity {
         String pages = pagesInputText.getText().toString();
         String genre = genreInputText.getText().toString();
         String language = languageInputText.getText().toString();
+        String url = urlInputText.getText().toString();
 
-        if (DataIsEmpty(title, author, pages, genre, language))
+        if (DataIsEmpty(title, author, pages, genre, language, url))
         {
             Toast.makeText(this, "Заповніть усі поля та додайте фото.", Toast.LENGTH_SHORT).show();
         }
@@ -120,6 +119,7 @@ public class AddNewBookActivity extends AppCompatActivity {
                     author,
                     genre,
                     language,
+                    url,
                     bookImageInBytes
             );
 
@@ -136,10 +136,11 @@ public class AddNewBookActivity extends AppCompatActivity {
         }
     }
 
-    private boolean DataIsEmpty(String title, String author, String pages, String genre, String language)
+    private boolean DataIsEmpty(String title, String author, String pages, String genre, String language, String url)
     {
         return TextUtils.isEmpty(title) || TextUtils.isEmpty(author) || TextUtils.isEmpty(pages)
-                || TextUtils.isEmpty(genre) || TextUtils.isEmpty(language) || bookImageInBytes == null;
+                || TextUtils.isEmpty(genre) || TextUtils.isEmpty(language) || TextUtils.isEmpty(url)
+                || bookImageInBytes == null;
     }
 
     @Override

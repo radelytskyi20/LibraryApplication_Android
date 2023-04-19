@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
                     case R.id.search_nav_BOTTOMNAVMENU:
                         StartSearchActivity();
+//                        StartBookDetailsActivity();
                         return true;
                 }
 
@@ -79,6 +80,11 @@ public class MainActivity extends AppCompatActivity {
     private void StartSearchActivity()
     {
         Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+        startActivity(intent);
+    }
+    private void StartBookDetailsActivity()
+    {
+        Intent intent = new Intent(MainActivity.this, BookDetailsActivity.class);
         startActivity(intent);
     }
 }
