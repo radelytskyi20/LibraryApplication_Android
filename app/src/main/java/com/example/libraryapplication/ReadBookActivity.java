@@ -38,20 +38,14 @@ public class ReadBookActivity extends AppCompatActivity {
         WebSettings webSettings = readBookWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
 
-//        if (isWebsiteAvailable(currentBook.getUrl())){
-//            readBookWebView.loadUrl(currentBook.getUrl());
-//        }
-//        else {
-//            Toast.makeText(this, "Помилка під час завантаження книги. Перевірте url та спробуйте ще раз.", Toast.LENGTH_SHORT).show();
-//        }
-
         new WebsiteAvailabilityTask().execute(currentBook.getUrl());
     }
 
     private class WebsiteAvailabilityTask extends AsyncTask<String, Void, Boolean>
     {
         @Override
-        protected Boolean doInBackground(String... urls) {
+        protected Boolean doInBackground(String... urls)
+        {
             try {
                 HttpURLConnection connection = (HttpURLConnection) new URL(urls[0]).openConnection();
                 connection.setRequestMethod("HEAD");
@@ -61,7 +55,6 @@ public class ReadBookActivity extends AppCompatActivity {
                 return false;
             }
         }
-
         @Override
         protected void onPostExecute(Boolean websiteAvailable) {
             if (websiteAvailable) {
