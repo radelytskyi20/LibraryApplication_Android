@@ -161,4 +161,20 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         return result > 0;
     }
 
+    public boolean deleteBook(Book book) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String queryString = "SELECT * FROM " + TABLE_MY_LIBRARY + " WHERE " + COLUMN_ID + " = ?";
+        Cursor cursor = db.rawQuery(queryString, new String[]{String.valueOf(book.getId())});
+
+        if (cursor.moveToFirst()) {
+            int result = db.delete(TABLE_MY_LIBRARY, COLUMN_ID + " = ?", new String[]{String.valueOf(book.getId())});
+            cursor.close();
+            db.close();
+            return (result != 0);
+        } else {
+            cursor.close();
+            db.close();
+            return false;
+        }
+    }
 }

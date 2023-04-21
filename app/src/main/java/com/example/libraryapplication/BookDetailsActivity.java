@@ -75,6 +75,40 @@ public class BookDetailsActivity extends AppCompatActivity {
                 updateBookInfo();
             }
         });
+
+        deleteBookButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deleteBook();
+            }
+        });
+
+        readBookButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                readBook();
+            }
+        });
+    }
+
+    private void readBook()
+    {
+        Intent readBookActivity = new Intent(BookDetailsActivity.this, ReadBookActivity.class);
+        readBookActivity.putExtra("id", currentBookId);
+        startActivity(readBookActivity);
+    }
+
+    private void deleteBook()
+    {
+        boolean result = myDatabaseHelper.deleteBook(currentBook);
+
+        if (result){
+            Toast.makeText(this, "Книгу було успішно видалено.", Toast.LENGTH_SHORT).show();
+            startMainActivity();
+        }
+        else {
+            Toast.makeText(this, "Сталась помилка під час видалення. Спробуйте пізніше.", Toast.LENGTH_SHORT).show();
+        }
     }
     private void updateBookInfo()
     {
