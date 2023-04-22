@@ -1,11 +1,5 @@
 <resources>
     <string name="app_name">LibraryApplication</string>
-
-    <!-- Main Activity -->
-    <string name="add_new_book_floatingButton_MAINACTIVITY">Добавить новую книгу</string>
-    <!--    -->
-
-
     <!-- AddNewBook Activity -->
     <string name="enter_book_title_ADDNEWBOOKACTIVITY">Назва книги</string>
     <string name="enter_author_ADDNEWBOOKACTIVITY">Автор</string>
@@ -40,13 +34,14 @@
     <string name="edit_url_BOOKDETAILSACTIVITY">Посилання на книгу</string>
     <!--    -->
 
+    <!-- Search Activity -->
     <string name="input_search_text_SEARCHACTIVITY">Пошук</string>
     <string name="search_text_SEARCHACTIVITY">Введіть текст пошуку</string>
     <string name="search_by_title_button_SEARCHACTIVITY">Пошук за назвою</string>
-    <string name="search_by_category_button_SEARCHACTIVITY">Пошук за категорією</string>
+    <string name="search_by_author_button_SEARCHACTIVITY">Пошук за автором</string>
     <string name="search_by_genre_button_SEARCHACTIVITY">Пошук за жанром</string>
     <string name="search_by_language_button_SEARCHACTIVITY">Пошук за мовою</string>
     <string name="sort_by_min_pages_button_SEARCHACTIVITY">Найменше сторінок</string>
     <string name="sort_by_max_pages_button_SEARCHACTIVITY">Найбільше сторінок</string>
-
+    <!--   -->
 </resources>

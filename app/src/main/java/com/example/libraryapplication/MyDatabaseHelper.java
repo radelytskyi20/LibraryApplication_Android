@@ -177,4 +177,116 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
             return false;
         }
     }
+
+    public List<Book> SearchByTitle(String searchText) {
+        List<Book> books = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_MY_LIBRARY + " WHERE " + COLUMN_TITLE + " LIKE '%" + searchText + "%'", null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                int id = cursor.getInt(0);
+                String title = cursor.getString(1);
+                String author = cursor.getString(2);
+                int pages = cursor.getInt(3);
+                String genre = cursor.getString(4);
+                String language = cursor.getString(5);
+                String url = cursor.getString(6);
+                byte[] image = cursor.getBlob(7);
+
+                Book book = new Book(id, pages, title, author, genre, language, url, image);
+                books.add(book);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        return books;
+    }
+
+    public List<Book> SearchByAuthor(String searchText) {
+        List<Book> books = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_MY_LIBRARY + " WHERE " + COLUMN_AUTHOR + " LIKE '%" + searchText + "%'", null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                int id = cursor.getInt(0);
+                String title = cursor.getString(1);
+                String author = cursor.getString(2);
+                int pages = cursor.getInt(3);
+                String genre = cursor.getString(4);
+                String language = cursor.getString(5);
+                String url = cursor.getString(6);
+                byte[] image = cursor.getBlob(7);
+
+                Book book = new Book(id, pages, title, author, genre, language, url, image);
+                books.add(book);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        return books;
+    }
+
+    public List<Book> SearchByGenre(String searchText) {
+        List<Book> books = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_MY_LIBRARY + " WHERE " + COLUMN_GENRE + " LIKE '%" + searchText + "%'", null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                int id = cursor.getInt(0);
+                String title = cursor.getString(1);
+                String author = cursor.getString(2);
+                int pages = cursor.getInt(3);
+                String genre = cursor.getString(4);
+                String language = cursor.getString(5);
+                String url = cursor.getString(6);
+                byte[] image = cursor.getBlob(7);
+
+                Book book = new Book(id, pages, title, author, genre, language, url, image);
+                books.add(book);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        return books;
+    }
+
+    public List<Book> SearchByLanguage(String searchText) {
+        List<Book> books = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_MY_LIBRARY + " WHERE " + COLUMN_LANGUAGE + " LIKE '%" + searchText + "%'", null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                int id = cursor.getInt(0);
+                String title = cursor.getString(1);
+                String author = cursor.getString(2);
+                int pages = cursor.getInt(3);
+                String genre = cursor.getString(4);
+                String language = cursor.getString(5);
+                String url = cursor.getString(6);
+                byte[] image = cursor.getBlob(7);
+
+                Book book = new Book(id, pages, title, author, genre, language, url, image);
+                books.add(book);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        return books;
+    }
 }
